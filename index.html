@@ -2,13 +2,54 @@
 <html lang="en">
 <head>
 
-	<meta charset="UTF-8">
-	<title>instam&#9825;tch</title>
+    <meta charset="UTF-8">
+    <title>instam&#9825;tch</title>
+    <!--<link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css"/>-->
+    <!--<script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
 </head>
 
 
 <body>
-	
+
+<div id="searchbar">
+
+    <input type="text"
+           placeholder="Search for User ..."
+           :value="value"
+           @input="updateUsers($event.target.value)"
+           @keydown.down = "down"
+           @keydown.up = "up"
+           @keydown.enter = "enterOrClick('1')"
+            >
+    <ul class="list-group" v-if="showList">
+        <li class="list-group-item"
+            v-for="(user, index) in users"
+            @click="enterOrClick"
+            v-bind:class="{'active': isActive(index)}">
+            {{user.username}}
+        </li>
+    </ul>
+
+</div>
+
+<a href="https://www.instagram.com/oauth/authorize/?client_id=c61259b12ba44dd7bf6ac2c07e665e41&redirect_uri=https://github.com/Fernandadp/instamatch&response_type=token&scope=basic+public_content">Login</a>
+
+
+<script src="searchbar.js"></script>
+
 </body>
 
 
