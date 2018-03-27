@@ -3,37 +3,87 @@
 
 <head>
 	<meta charset="UTF-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
 	<title>Instam&#9825;tch</title>
+
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" href="styles/styles.css">
 </head>
 
 
 <body>
 
-	<div id="searchBar">
-		<input id="user1">
-		<input id="user2">
+	<div class="jumbotron text-center">
+		<h1>Instam&#9825;tch</h1>
+		<p>Check your compatibility with your favourites instagramers</p>
 	</div>
 
+	<div class="container-fluid">
 
-	<div id="usersInfo">
-	
-		<div class="usersInfo">
+		<div id="usersInfo">
+
+
+
+			<div class="usersInfo">
+
+				<div class="searchBar">
+					<input id="user1">
+				</div>
+
+			<div class="infoBox">
+				<img src="" alt="" class="rounded-circle">
+
+				<p id="name1">Name:</p>
+				<p id="followers1">Followers:</p>
+				<p id="totalLikes1">Total likes:</p>
+
+				</div>
+			</div>
+
+			<div class="usersInfo">
+
+				<div class="searchBar">
+					<input id="user2">
+				</div>
+
+				<div class="infoBox">
+				<img src="" alt="" class="rounded-circle">
+
+				<p id="name2">Name:</p>
+				<p id="followers2">Followers:</p>
+				<p id="totalLikes2">Total likes:</p>
+
+				</div>
+			</div>
+
+		</div>
+
+		<div id="results">
 
 
 		</div>
 
-		<div class="usersInfo">
 
-
-		</div>
-		
 	</div>
 
+	<footer>instamatch 2018</footer>
 
-
-
-
-
+	<script src="instagram.js"></script>
+	<script src="main.js"></script>
 </body>
 
 </html>
