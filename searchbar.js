@@ -15,7 +15,11 @@ $(function () {
             showList: false,
         },
         computed: {
-
+            accessToken: function () {
+                let url = window.location.href;
+                let split = url.split("#access_token=");
+                return split[split.length - 1]
+            }
         },
         methods: {
             updateUsers(text) {
@@ -24,11 +28,12 @@ $(function () {
 
                 //set showList to true
                 this.showList = true;
+                console.log(this.accessToken);
 
                 //https://api.instagram.com/oauth/authorize/?client_id=c61259b12ba44dd7bf6ac2c07e665e41&redirect_uri=https://github.com/Fernandadp/instamatch&response_type=token&scope=basic+public_content
 
                 if (text.length >= 3) {
-                    $.getJSON("https://api.instagram.com/v1/users/search?q=" + text + "&access_token=316085852.c61259b.34b9c69710644b89b60b32e28547f2c7",
+                    $.getJSON("https://api.instagram.com/v1/users/search?q=" + text + "&access_token=" + this.accessToken,
                         function (json) {
                             self.users = json.data;
                         });
@@ -36,11 +41,6 @@ $(function () {
                 else {
                     this.users = []
                 }
-            },
-
-            getMedia(activeUser, userLeftOrRight) {
-
-
             },
 
             // When enter pressed or clicked on the list item set active user and hide list
@@ -56,7 +56,7 @@ $(function () {
 
                 // get media of active user
                 let self = this;
-                $.getJSON("https://api.instagram.com/v1/users/" + activeUser.id + "/media/recent/?access_token=316085852.c61259b.34b9c69710644b89b60b32e28547f2c7",
+                $.getJSON("https://api.instagram.com/v1/users/" + activeUser.id + "/media/recent/?access_token=" + this.accessToken,
                     function (json) {
                         userOneOrTwo === "1" ? this.activeMedia1 = json.data : this.activeMedia2 = json.data;
                         console.log(this.activeMedia1);
