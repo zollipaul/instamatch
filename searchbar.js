@@ -1,16 +1,28 @@
 $(function () {
 
+    Vue.directive('click-outside', {
+        bind: function (el, binding, vnode) {
+            el.event = function (event) {
+                // here I check that click was outside the el and his childrens
+                if (!(el == event.target || el.contains(event.target))) {
+                    // and if it did, call method provided in attribute value
+                    vnode.context[binding.expression](event);
+                }
+            };
+            document.body.addEventListener('click', el.event)
+        },
+        unbind: function (el) {
+            document.body.removeEventListener('click', el.event)
+        },
+    });
 
     let table = new Vue({
-        el: "#searchbar",
+        el: "#searchbar1",
         data: {
             users: [],
-            value1: "",
-            value2: "",
-            activeUser1: {},
-            activeUser2: {},
-            activeMedia1: {},
-            activeMedia2: {},
+            value: "",
+            activeUser: {},
+            activeMedia: {},
             search: "",
             current: 0,
             showList: false,
@@ -22,9 +34,6 @@ $(function () {
                 let url = window.location.href;
                 let split = url.split("#access_token=");
                 return split[split.length - 1]
-
-                // Get access token
-                //return xxx
             }
         },
         methods: {
@@ -34,8 +43,6 @@ $(function () {
 
                 //set showList to true
                 this.showList = true;
-
-                //https://api.instagram.com/oauth/authorize/?client_id=c61259b12ba44dd7bf6ac2c07e665e41&redirect_uri=https://github.com/Fernandadp/instamatch&response_type=token&scope=basic+public_content
 
                 if (text.length >= 3) {
                     $.getJSON("https://api.instagram.com/v1/users/search?q=" + text + "&access_token=" + this.accessToken,
@@ -49,7 +56,7 @@ $(function () {
             },
 
             // When enter pressed or clicked on the list item set active user and hide list
-            enterOrClick (userOneOrTwo) {
+            enterOrClick() {
 
                 // guard: this.users.length > 0
                 if (this.users.length === 0) {
@@ -59,7 +66,7 @@ $(function () {
                 let activeUser = this.users[this.current];
 
                 // set active user
-                userOneOrTwo === "1" ? this.activeUser1 = activeUser : this.activeUser2 = activeUser;
+                this.activeUser = activeUser;
                 this.value = activeUser.username;
 
                 // hide list
@@ -69,30 +76,36 @@ $(function () {
                 let self = this;
                 $.getJSON("https://api.instagram.com/v1/users/" + activeUser.id + "/media/recent/?access_token=" + this.accessToken,
                     function (json) {
-                        userOneOrTwo === "1" ? this.activeMedia1 = json.data : this.activeMedia2 = json.data;
+
+                        this.activeMedia = json.data;
                     });
-                console.log(this.activeUser1);
+                console.log(this.activeUser);
             },
 
             // When up pressed while suggestions are showList
-            up () {
+            up() {
                 if (this.current > 0) {
                     this.current--
                 }
             },
 
             // When up pressed while suggestions are showList
-            down () {
+            down() {
                 if (this.current < this.users.length - 1) {
                     this.current++
                 }
             },
 
             // For highlighting element
-            isActive (index) {
+            isActive(index) {
                 return index === this.current
             },
+            hideList: function (event) {
+                this.showList = false;
+            }
         },
+
+
     })
 
 })
