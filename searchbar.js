@@ -5,7 +5,8 @@ $(function () {
         el: "#searchbar",
         data: {
             users: [],
-            value: "",
+            value1: "",
+            value2: "",
             activeUser1: {},
             activeUser2: {},
             activeMedia1: {},
