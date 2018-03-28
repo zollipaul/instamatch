@@ -1,4 +1,7 @@
 $(function () {
+    
+    let activeUser1;
+    let activeMedia1;
 
     Vue.directive('click-outside', {
         bind: function (el, binding, vnode) {
@@ -79,8 +82,10 @@ $(function () {
 
                         this.activeMedia = json.data;
                         console.log(this.activeMedia);
+                        activeMedia1 = json.data;
                     });
                 console.log(this.activeUser);
+                activeUser1 = this.activeUser;
             },
 
             // When up pressed while suggestions are showList
