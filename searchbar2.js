@@ -78,6 +78,7 @@ $(function () {
                     function (json) {
 
                         this.activeMedia = json.data;
+                        console.log(this.activeMedia);
                     });
                 console.log(this.activeUser);
             },
