@@ -50,7 +50,7 @@
 		<div id="searchbar">
 
 			<div class="col-sm-4">
-				<input type="text" placeholder="Search for User ..." :value="value" @input="updateUsers($event.target.value)" @keydown.down="down" @keydown.up=" up" @keydown.enter="enterOrClick('2')" id="user1">
+				<input type="text" placeholder="Search for User ..." :value="value1" @input="updateUsers($event.target.value)" @keydown.down="down" @keydown.up=" up" @keydown.enter="enterOrClick('2')" id="user1">
 			<ul class="list-group" v-if="showList">
 				<li class="list-group-item" v-for="(user, index) in users" @click="enterOrClick" v-bind:class="{'active': isActive(index)}">
 					{{user.username}}
