@@ -23,6 +23,10 @@ h1 {
 
 }
 
+#logout {
+	display: none;
+}
+
 
 footer {
 	background-color: black;
@@ -34,17 +38,11 @@ footer {
 	width: 100%;
 }
 
-.usersInfo {
-	display: flex;
-	padding: 0;
-	margin: 0;
-	font-family: 'Neuton', serif;
-	font-size: 20px;
-}
 
 input {
 	display: flex;
 	justify-content: center;
+	width: 400px;
 
 }
 
@@ -54,20 +52,9 @@ input {
 }
 
 
-input {
-	width: 400px;
-}
-
-/*
-#usersInfo {
-	display: flex;
-	justify-content: space-around;
-}
-*/
-
 .rounded-circle {
 	display: flex;
-/*	border: 4px solid black;*/
+	/*	border: 4px solid black;*/
 	margin-top: 10px;
 	z-index: 2;
 	width: 150px;
@@ -75,7 +62,7 @@ input {
 
 }
 
-.img{
+.img {
 	display: flex;
 	width: 100%;
 	justify-content: center;
@@ -84,28 +71,22 @@ input {
 .card-deck {
 	margin-top: 50px;
 	margin-bottom: 50px;
-	
+
 }
 
-.card{
+.card {
 	border: 4px solid black;
 }
 
-/*
-.infoBox {
-	display: flex;
-	flex-wrap: wrap;
-	flex-direction: column;
-	border: 4px solid black;
-	border-radius: 5px;
-	margin-top: 90px;
-	margin-bottom: 30px;
-	padding-top: 90px;
-	width: 500px;
-	height: 800px;
-	
+.card-text{
+	font-size: 18px;
+	font-family: 'Neuton', serif;
+	}
+
+.card-title{
+	font-size: 25px;
+	font-family: 'Neuton', serif;
 }
-*/
 
 #results {
 	display: flex;
