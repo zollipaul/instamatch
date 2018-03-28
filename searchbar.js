@@ -19,12 +19,12 @@ $(function () {
             accessToken: function () {
 
                 //// Get access token via Login Button
-                // let url = window.location.href;
-                // let split = url.split("#access_token=");
-                // return split[split.length - 1]
+                let url = window.location.href;
+                let split = url.split("#access_token=");
+                return split[split.length - 1]
 
                 // Get access token
-                return "316085852.c61259b.34b9c69710644b89b60b32e28547f2c7"
+                //return xxx
             }
         },
         methods: {
