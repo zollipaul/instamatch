@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Instam&#9825;tch</title>
+
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+	<script src=“https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js“></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Neuton:300,400" rel="stylesheet">
+	<link rel="stylesheet" href="styles/styles.css">
+</head>
+
+
+<body>
+
+	<div class="jumbotron text-center">
+		<h1>Instamatch&#9825;</h1>
+		<p>Check your compatibility with your favourite instagramers!</p>
+
+		<button type="button" class="btn btn-ins" id="login"><i class="fa fa-instagram pr-1"></i><a class=“link” href=“https://www.instagram.com/oauth/authorize/?client_id=c61259b12ba44dd7bf6ac2c07e665e41&redirect_uri=https://fernandadp.github.io/instamatch&response_type=token&scope=basic+public_content“><b>Log in</b> with instagram</a></button>
+		<button type="button" class="btn btn-ins" id="logout"><i class="fa fa-instagram pr-1"></i><b>Log out</b></button>
+
+	</div>
+
+
+	<div class="container-fluid">
+
+
+		<div id="searchbar">
+
+			<div class="col-sm-4">
+				<input type=“text” placeholder=“Search for User ...” :value=“value” @input=“updateUsers($event.target.value)” @keydown.down=“ down” @keydown.up=“ up” @keydown.enter=“ enterOrClick(‘2’)” id="user1">
+			<ul class=“list-group” v-if=“showList”>
+				<li class=“list-group-item” v-for=“(user, index) in users” @click=“enterOrClick” v-bind:class=“{‘active’: isActive(index)}“>
+					{{user.username}}
+				</li>
+			</ul>
+			</div>
+
+			<div class="col-sm-4">
+				<input type=“text” placeholder=“Search for User ...” :value=“value2” @input=“updateUsers($event.target.value)” @keydown.down=“ down” @keydown.up=“ up” @keydown.enter=“ enterOrClick(‘2’)” id="user2">
+			<ul class=“list-group” v-if=“showList”>
+				<li class=“list-group-item” v-for=“(user, index) in users” @click=“enterOrClick” v-bind:class=“{‘active’: isActive(index)}“>
+					{{user.username}}
+				</li>
+			</ul>
+			</div>
+
+
+		</div>
+
+		<!--
+		<div id="usersInfo">
+
+			<div class="usersInfo">
+
+				<div class="profilePic">
+					<img src="" alt="" class="rounded-circle" width="150" height="150">
+				</div>
+
+				<div class="infoBox">
+
+					<p id="name1"></p>
+					<p id="followers1"></p>
+					<p id="totalLikes1"></p>
+
+				</div>
+				
+			</div>
+
+			<div class="usersInfo">
+
+				<div class="profilePic">
+					<img src="" alt="" class="rounded-circle" width="150" height="150">
+				</div>
+
+				<div class="infoBox">
+					<p id="name2"></p>
+					<p id="followers2"></p>
+					<p id="totalLikes2"></p>
+
+				</div>
+				
+			</div>
+
+		</div>
+-->
+
+
+		<div class="card-deck">
+			<div class="card text-center">
+				<div class="img">
+					<img class="rounded-circle" src="/images/instagram.svg" alt="Card image cap">
+				</div>
+
+				<div class="card-body">
+					<h5 class="card-title">Name</h5>
+					<h6 class="card-title">Followers</h6>
+					<h6 class="card-title">Total Likes received</h6>
+
+
+					<h6 class="card-title">Most used words</h6>
+					<p class="card-text">word1</p>
+					<p class="card-text">word2</p>
+					<p class="card-text">word3</p>
+
+					<!--					<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
+				</div>
+			</div>
+
+
+			<div class="card text-center">
+				<div class="img">
+					<img class="rounded-circle" src="/images/instagram.svg" alt="Card image cap">
+				</div>
+				<div class="card-body">
+					<h5 class="card-title">Name2</h5>
+					<p class="card-text">Followers</p>
+					<p class="card-text">Total Likes received</p>
+					<!--					<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
+				</div>
+			</div>
+
+		</div>
+
+
+		<div class="row align-items-center justify-content-center">
+			<div id="results" class="col-sm-">
+
+				<p>___________________</p>
+			</div>
+
+
+		</div>
+	</div>
+
+	<footer>Instamatch 2018</footer>
+
+	<script src=“searchbar.js”></script>
+	<script src="instagram.js"></script>
+	<script src="main.js"></script>
+</body>
+
+</html>

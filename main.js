@@ -1,15 +1,21 @@
 var usersData = data.graphql.user;
+var name = usersData.username
+var followers = usersData.edge_followed_by.count;
+var profPic = usersData.profile_pic_url_hd;
+var popularity
 
-var name = data.username;
-var followers = data.edge_followed_by.count;
-var totalLikes;
-
-$(totalLikes).each(function(likes){
-	
-	var total = likes
-
-	});
+$(usersData.edge_owner_to_timeline_media.edges.node).each(function (likes) {
 
 
-name = document.getElementById("name1");
-followers = document.getElementById("followers1");
+})
+
+$("#name1").append("Name:  " + name);
+$("#followers1").append("Followers:  " + followers);
+
+$("#user1").attr("placeholder", "Search user");
+$("#user2").attr("placeholder", "Search second user");
+
+
+
+console.log(name);
+

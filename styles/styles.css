@@ -1,4 +1,116 @@
+h1 {
+	font-family: 'Billabong';
+	font-size: 65px;
+	text-decoration-line: underline;
+	text-decoration-style: solid;
+	padding: 0;
+	margin: 0;
+
+}
+
+.jumbotron p {
+	font-size: 28px;
+	font-family: 'Neuton', serif;
+	margin-top: 5;
+	padding-top: 0;
+}
+
+
+.jumbotron {
+	background-image: url(/images/Blurred-Lights-1200x795.jpg);
+	background-size: cover;
+	border: 4px solid black;
+
+}
+
+
+footer {
+	background-color: black;
+	border-radius: 5px;
+	color: deeppink;
+	text-align: center;
+	font-family: 'Neuton', serif;
+	font-size: 18px;
+	width: 100%;
+}
+
+.usersInfo {
+	display: flex;
+	padding: 0;
+	margin: 0;
+	font-family: 'Neuton', serif;
+	font-size: 20px;
+}
+
+input {
+	display: flex;
+	justify-content: center;
+
+}
+
+#searchbar {
+	display: flex;
+	justify-content: space-around;
+}
+
+
+input {
+	width: 400px;
+}
+
+/*
 #usersInfo {
 	display: flex;
 	justify-content: space-around;
+}
+*/
+
+.rounded-circle {
+	display: flex;
+/*	border: 4px solid black;*/
+	margin-top: 10px;
+	z-index: 2;
+	width: 150px;
+	height: 150px;
+
+}
+
+.img{
+	display: flex;
+	width: 100%;
+	justify-content: center;
+}
+
+.card-deck {
+	margin-top: 50px;
+	margin-bottom: 50px;
+	
+}
+
+.card{
+	border: 4px solid black;
+}
+
+/*
+.infoBox {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	border: 4px solid black;
+	border-radius: 5px;
+	margin-top: 90px;
+	margin-bottom: 30px;
+	padding-top: 90px;
+	width: 500px;
+	height: 800px;
+	
+}
+*/
+
+#results {
+	display: flex;
+	border: 4px solid black;
+	border-radius: 5px;
+	margin-bottom: 30px;
+	height: 60px;
 }
