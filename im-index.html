@@ -8,8 +8,7 @@
 
 	<title>Instam&#9825;tch</title>
 
-	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
-
+	<script src=“https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js“></script>
 
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -38,7 +37,7 @@
 		<h1>Instamatch&#9825;</h1>
 		<p>Check your compatibility with your favourite instagramers!</p>
 
-		<button type="button" class="btn btn-ins" id="login"><i class="fa fa-instagram pr-1"></i><a class="link" href="https://www.instagram.com/oauth/authorize/?client_id=c61259b12ba44dd7bf6ac2c07e665e41&redirect_uri=https://fernandadp.github.io/instamatch&response_type=token&scope=basic+public_content"><b>Log in</b> with instagram</a></button>
+		<button type="button" class="btn btn-ins" id="login"><a class=“link” href=“https://www.instagram.com/oauth/authorize/?client_id=c61259b12ba44dd7bf6ac2c07e665e41&redirect_uri=https://fernandadp.github.io/instamatch&response_type=token&scope=basic+public_content“><i class="fa fa-instagram pr-1"></i><b>Log in</b> with instagram</a></button>
 		<button type="button" class="btn btn-ins" id="logout"><i class="fa fa-instagram pr-1"></i><b>Log out</b></button>
 
 	</div>
@@ -50,52 +49,65 @@
 		<div id="searchbar">
 
 			<div class="col-sm-4">
-
-				<div id="searchbar1">
-
-					<input type="text" placeholder="Search for User ..." :value="value" @input="updateUsers($event.target.value)" @keydown.down="down" @keydown.up="up" @keydown.enter="enterOrClick" v-click-outside="hideList" id="user1">
-
-					<ul class="list-group" v-if="showList">
-
-						<li class="list-group-item" v-for="(user, index) in users" @click="enterOrClick" v-bind:class="{'active': isActive(index)}">
-
-							{{user.username}}
-
-						</li>
-
-					</ul>
-
-				</div>
-
+				<input type=“text” placeholder=“Search for User ...” :value=“value” @input=“updateUsers($event.target.value)” @keydown.down=“ down” @keydown.up=“ up” @keydown.enter=“ enterOrClick(‘2’)” id="user1">
+			<ul class=“list-group” v-if=“showList”>
+				<li class=“list-group-item” v-for=“(user, index) in users” @click=“enterOrClick” v-bind:class=“{‘active’: isActive(index)}“>
+					{{user.username}}
+				</li>
+			</ul>
 			</div>
 
-
 			<div class="col-sm-4">
-
-				<div id="searchbar2">
-
-					<input type="text" placeholder="Search for User ..." :value="value" @input="updateUsers($event.target.value)" @keydown.down="down" @keydown.up="up" @keydown.enter="enterOrClick" id="user1">
-
-					<ul class="list-group" v-if="showList">
-
-						<li class="list-group-item" v-for="(user, index) in users" @click="enterOrClick" v-bind:class="{'active': isActive(index)}">
-
-							{{user.username}}
-
-						</li>
-
-					</ul>
-
-				</div>
-
+				<input type=“text” placeholder=“Search for User ...” :value=“value2” @input=“updateUsers($event.target.value)” @keydown.down=“ down” @keydown.up=“ up” @keydown.enter=“ enterOrClick(‘2’)” id="user2">
+			<ul class=“list-group” v-if=“showList”>
+				<li class=“list-group-item” v-for=“(user, index) in users” @click=“enterOrClick” v-bind:class=“{‘active’: isActive(index)}“>
+					{{user.username}}
+				</li>
+			</ul>
 			</div>
 
 
 		</div>
 
+		<!--
+		<div id="usersInfo">
+
+			<div class="usersInfo">
+
+				<div class="profilePic">
+					<img src="" alt="" class="rounded-circle" width="150" height="150">
+				</div>
+
+				<div class="infoBox">
+
+					<p id="name1"></p>
+					<p id="followers1"></p>
+					<p id="totalLikes1"></p>
+
+				</div>
+				
+			</div>
+
+			<div class="usersInfo">
+
+				<div class="profilePic">
+					<img src="" alt="" class="rounded-circle" width="150" height="150">
+				</div>
+
+				<div class="infoBox">
+					<p id="name2"></p>
+					<p id="followers2"></p>
+					<p id="totalLikes2"></p>
+
+				</div>
+				
+			</div>
+
+		</div>
+-->
+
 
 		<div class="card-deck">
-		
 			<div class="card text-center">
 				<div class="img">
 					<img class="rounded-circle" src="/images/instagram.svg" alt="Card image cap">
@@ -107,7 +119,7 @@
 					<h6 class="card-title">Total Likes received</h6>
 
 
-					<p class="card-title">Most used words</p>
+					<h6 class="card-title">Most used words</h6>
 					<p class="card-text">word1</p>
 					<p class="card-text">word2</p>
 					<p class="card-text">word3</p>
@@ -121,16 +133,10 @@
 				<div class="img">
 					<img class="rounded-circle" src="/images/instagram.svg" alt="Card image cap">
 				</div>
-				
 				<div class="card-body">
 					<h5 class="card-title">Name2</h5>
-					<h6 class="card-title">Followers</h6>
-					<h6 class="card-title">Total Likes received</h6>
-
-					<p class="card-title">Most used words</p>
-					<p class="card-text">word1</p>
-					<p class="card-text">word2</p>
-					<p class="card-text">word3</p>
+					<p class="card-text">Followers</p>
+					<p class="card-text">Total Likes received</p>
 					<!--					<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
 				</div>
 			</div>
@@ -141,21 +147,18 @@
 		<div class="row align-items-center justify-content-center">
 			<div id="results" class="col-sm-">
 
-  				RESULTS!
-
-
+				<p>___________________</p>
 			</div>
+
+
 		</div>
 	</div>
 
 	<footer>Instamatch 2018</footer>
 
-
-
-	<script src="searchbar1.js"></script>
-	<script src="searchbar2.js"></script>
-	<!--	<script src="instagram.js"></script>-->
-		<script src="main.js"></script>
+	<script src=“searchbar.js”></script>
+<!--	<script src="instagram.js"></script>-->
+<!--	<script src="main.js"></script>-->
 </body>
 
 </html>
